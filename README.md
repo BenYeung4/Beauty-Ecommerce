@@ -8,7 +8,8 @@ I am able to make an account and store recently viewed items for display.
 As a consumer once I make an account I am able to maintain the products in shopping cart for checkout.
 
 
-Installs
+
+#Installs
 
 npm init -y
 
