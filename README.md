@@ -9,7 +9,7 @@ As a consumer once I make an account I am able to maintain the products in shopp
 
 
 
-#Installs
+# Installs
 
 npm init -y
 
