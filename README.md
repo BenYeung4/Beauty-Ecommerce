@@ -3,7 +3,7 @@
 # User Story:
 As a consumer of Korean beauty and skincare products I am looking purchase a range of high quality products. 
 
-I am able to make an account and store recently viewed items for display. 
+I am able to create an account and store recently viewed items which will then be put on display. 
 
 As a consumer once I make an account I am able to maintain the products in shopping cart for checkout.
 
