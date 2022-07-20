@@ -37,29 +37,9 @@ Product.init(
       type: DataTypes.DECIMAL(7, 2),
       allowNull: false,
     },
-    size_dimensions: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     weight: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    //for the image
-    filename: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    image_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "image",
-        key: "id",
-      },
     },
   },
   {
