@@ -46,6 +46,11 @@ User.init(
         len: [4],
       },
     },
+    is_admin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false
+    }
   },
   {
     // TABLE CONFIGURATION OPTIONS GO HERE (https://sequelize.org/v5/manual/models-definition.html#configuration))

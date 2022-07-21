@@ -77,7 +77,7 @@ router.put('/:id', (req, res) => {
         },
         {
             where: {
-                id: req.params.product_id,
+                id: req.params.id,
                 user_id: req.session.user_id
             }
         }
@@ -99,13 +99,33 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     Cart.destroy({
         where: {
-            id: req.params.product_id,
+            id: req.params.id,
             user_id: req.session.user_id
         }
     })
     .then(dbCartData => {
         if (!dbCartData) {
             res.status(404).json({ message: 'No cart item found with this id' });
+            return;
+        }
+        res.json(dbCartData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+// Clear cart completely
+router.delete('/', (req, res) => {
+    Cart.destroy({
+        where: {
+            user_id: req.session.user_id
+        }
+    })
+    .then(dbCartData => {
+        if (!dbCartData) {
+            res.status(404).json({ message: 'No cart items found for this user' });
             return;
         }
         res.json(dbCartData);
