@@ -5,7 +5,8 @@ const userdata = [
     {
         username: 'admin',
         email: 'admin@example.com',
-        password: 'admin'
+        password: 'admin',
+        is_admin: true
     }
 ];
 

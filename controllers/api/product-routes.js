@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 // Get one product with id
 router.get('/:id', (req, res) => {
-    Product.findAll({
+    Product.findOne({
         where: {
             id: req.params.id
         }
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
     Product.create({
         url: req.body.url,
         description: req.body.description,
-        manufacturer: req.session.manufacturer,
+        manufacturer: req.body.manufacturer,
         name: req.body.name,
         stock: req.body.stock,
         price: req.body.price,
@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
         {
             url: req.body.url,
             description: req.body.description,
-            manufacturer: req.session.manufacturer,
+            manufacturer: req.body.manufacturer,
             name: req.body.name,
             stock: req.body.stock,
             price: req.body.price,

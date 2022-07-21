@@ -91,6 +91,7 @@ router.post('/login', (req, res) => {
             // declare session variables
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
+            req.session.is_admin = dbUserData.is_admin;
             req.session.loggedIn = true;
 
             res.json({ user: dbUserData, message: 'You are now logged in!'});
@@ -135,6 +136,13 @@ router.put('/:id', (req, res) => {
 
 // DELETE /api/users/1
 router.delete('/:id', (req, res) => {
+
+    // Allow user to delete only their own user_id except if this user is an admin
+    if (req.session.user_id != req.params.id && !req.session.is_admin) {
+        res.status(401).json({ message: 'Not authorized to this user id' });
+        return;
+    };
+
     User.destroy({
         where: {
             id: req.params.id
@@ -145,7 +153,10 @@ router.delete('/:id', (req, res) => {
             res.status(404).json({ message: 'No user found with this id' });
             return;
         }
-        res.json(dbUserData);
+        // Destroy session if successful in deleting user
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
     })
     .catch(err => {
         console.log(err);
