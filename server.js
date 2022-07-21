@@ -24,7 +24,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 //uses with the cookies, best to make the secret: very difficult, resave: means do we want to save everything at once (false, only does one variable instead of multiple)
 const sess = {
-  secret: "Super secret secret",
+  secret: process.env.SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,

@@ -1,0 +1,16 @@
+{{!partial help extract smaller components from a template to reuse in other templates}}
+
+        <article class="border-solid border-slate-800 border-2 m-2">
+            <div class="bg-slate-800 text-white text-lg font-bold p-2 flex flex-row">
+                <div class="justify-left grow truncate">
+                    {{name}}
+                </div>
+                <div class="justify-right truncate">
+                    {{manufacturer}}
+                </div>
+            </div>
+            <div class="bg-white p-2 whitespace-pre-line"><img src="{{url}}" class="w42" />{{description}}</div>
+            <div class="p-2">
+                <a href="/product/{{id}}">more info</a>
+            </div>
+        </article>
