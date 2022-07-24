@@ -8,7 +8,7 @@ router.get('/', isAdmin, (req, res) => {
     .then((dbProductData) => {
         // serialize data before passing to template
         const products = dbProductData.map((product) => product.get({ plain: true }));
-        res.render('admin', { products, loggedIn: true });
+        res.render('admin', { products, loggedIn: true, isAdmin: true });
     })
     .catch((err) => {
         console.log(err);
@@ -26,7 +26,7 @@ router.get('/edit/:id', isAdmin, (req, res) => {
     .then((dbProductData) => {
         // serialize data before passing to template
         const product = dbProductData.get({ plain: true });
-        res.render('edit-product', { product, loggedIn: true });
+        res.render('edit-product', { product, loggedIn: true, isAdmin: true });
     })
     .catch((err) => {
         console.log(err);

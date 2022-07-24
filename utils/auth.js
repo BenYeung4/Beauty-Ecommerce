@@ -21,7 +21,7 @@ const apiAuth = (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-  if (!req.session.is_admin) {
+  if (!req.session.isAdmin) {
       res.status(401).json({ message: 'You are not authorized!' });
   } else {
       next();

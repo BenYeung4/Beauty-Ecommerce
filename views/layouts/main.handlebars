@@ -28,6 +28,11 @@
                             <li>
                                 <a href="/cart" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Cart</a>
                             </li>
+                            {{#if isAdmin}}
+                            <li>
+                                <a href="/admin" id="admin" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Admin</a>
+                            </li>
+                            {{/if}}
                             <li>
                                 <a href="#" id="logout" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
                             </li>
