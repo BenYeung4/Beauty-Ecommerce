@@ -1,38 +1,21 @@
 {{!login file}}
 
+<div class="w-96 border border-slate-800 m-8">
+    <div class="bg-slate-800 text-white p-4">Login Form</div>
 <form class="login-form">
-  <div>
-    <label for="email-login">email:</label>
-    <input type="text" id="email-login" />
-  </div>
-  <div>
-    <label for="password-login">password:</label>
-    <input type="password" id="password-login" />
-  </div>
-  <div>
-    <button type="submit">login</button>
-  </div>
+    <div class="flex flex-row p-4">
+        <div class="w-24"><label for="email-login">Email:</label></div>
+        <div class="w-full"><input type="text" id="email-login" class="border w-full" /></div>
+    </div>
+    <div class="flex flex-row p-4">
+        <div class="w-24"><label for="password-login">Password:</label></div>
+        <div class="w-full"><input type="password" id="password-login" class="border w-full" /></div>
+    </div>
+    <div class="flex flex-row p-4">
+        <div class="justify-left grow"><button type="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium">Login</button></div>
+        <div class="justify-right"></div>
+    </div>
 </form>
-
-
-{{!sign up file}}
-
-<form class="signup-form">
-  <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
-  </div>
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
-  </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
-</form>
+</div>
 
 <script src="/javascript/login.js"></script>

@@ -24,7 +24,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 //uses with the cookies, best to make the secret: very difficult, resave: means do we want to save everything at once (false, only does one variable instead of multiple)
 const sess = {
-  secret: "Super secret secret",
+  secret: process.env.SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -53,6 +53,6 @@ app.use(require("./controllers/"));
 //turn on connection to db and server. if it doesn't find a table, it will create one for us
 //force: false, not neeed but if it was set to true, it would drop and re-create all the databases tables on startup, this is used when we need to make changes to the Sequelize models, the database would need a way to unerstand that somethin has changed.
 //if we set it to true, then the database connection must sync with the model definitions and associations.  it will make the tables re-create if there are any asociation changes ex. password changes
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ alter: true }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
