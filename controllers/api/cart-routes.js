@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const { User, Product, Cart} = require('../../models');
+const { apiAuth } = require('../../utils/auth');
 
 // Get all products in cart for user_id
-router.get('/', (req, res) => {
+router.get('/', apiAuth, (req, res) => {
     Cart.findAll({
         where: {
             user_id: req.session.user_id
@@ -25,7 +26,7 @@ router.get('/', (req, res) => {
 });
 
 // Get one item in cart by cart.id for user_id
-router.get('/:id', (req, res) => {
+router.get('/:id', apiAuth, (req, res) => {
     Cart.findAll({
         where: {
             // id is unique but use user_id to make sure we get the right cart item
@@ -56,7 +57,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Add product id to cart
-router.post('/:id', (req, res) => {
+router.post('/:id', apiAuth, (req, res) => {
     Cart.create({
         product_id: req.params.id,
         user_id: req.session.user_id,
@@ -70,7 +71,7 @@ router.post('/:id', (req, res) => {
 });
 
 // Update quantity of item in cart
-router.put('/:id', (req, res) => {
+router.put('/:id', apiAuth, (req, res) => {
     Cart.update(
         {
             quantity: req.body.quantity
@@ -96,7 +97,7 @@ router.put('/:id', (req, res) => {
 });
 
 // Delete item from cart by cart.id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', apiAuth, (req, res) => {
     Cart.destroy({
         where: {
             id: req.params.id,
@@ -117,7 +118,7 @@ router.delete('/:id', (req, res) => {
 });
 
 // Clear cart completely
-router.delete('/', (req, res) => {
+router.delete('/', apiAuth, (req, res) => {
     Cart.destroy({
         where: {
             user_id: req.session.user_id

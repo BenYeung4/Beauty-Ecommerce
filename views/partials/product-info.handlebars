@@ -15,6 +15,14 @@
             <div>{{manufacturer}}</div>
             <div>${{price}}</div>           
             <div>{{weight}}</div>
-            <div>Stock:{{stock}}</div>          
+            {{#if low_stock}}
+            {{#if out_of_stock}}
+            <div>OUT OF STOCK</div>
+            {{else}}
+            <div>Only {{stock}} items left!</div>
+            {{/if}}
+            {{else}}
+            <div>IN STOCK</div>
+            {{/if}}
             </div>
         </article>

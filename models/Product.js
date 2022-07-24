@@ -38,6 +38,24 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    low_stock: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return this.getDataValue('stock')<10;
+      },
+      set() {
+        throw new Error('low_stock is virtual for stock');
+      }
+    },
+    out_of_stock: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return this.getDataValue('stock')===0;
+      },
+      set() {
+        throw new Error('out_of_stock is virtual for stock');
+      }
+    }
   },
   {
     sequelize,
