@@ -1,0 +1,13 @@
+<table>
+    <thead><tr><th>id</th><th>name</th><th>Actions</th></tr></thead>
+    <tbody>
+  {{#each products as |product|}}
+  <tr>
+  <td>{{id}}</td>
+    <td>{{name}}</td>
+    <td class="w-96"><a href="/admin/edit/{{id}}" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium mx-3">Edit Product</a>
+    <a href="/admin/delete/{{id}}" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium mx-3">Delete Product</a></td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

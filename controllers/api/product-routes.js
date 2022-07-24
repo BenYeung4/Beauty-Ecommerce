@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { User, Product, Cart} = require('../../models');
+const { apiAuth, isAdmin } = require('../../utils/auth');
 
 // Get all products
 router.get('/', (req, res) => {
@@ -34,7 +35,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Make new product
-router.post('/', (req, res) => {
+router.post('/', isAdmin, (req, res) => {
     // expects {url, description, manufacturer, name, stock, price, meight}
     Product.create({
         url: req.body.url,
@@ -53,7 +54,7 @@ router.post('/', (req, res) => {
 });
 
 // Change product details, by id
-router.put('/:id', (req, res) => {
+router.put('/:id', isAdmin, (req, res) => {
     Product.update(
         {
             url: req.body.url,
@@ -84,7 +85,7 @@ router.put('/:id', (req, res) => {
 });
 
 // Delete product by id - we no longer sell product
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isAdmin, (req, res) => {
     Product.destroy({
         where: {
             id: req.params.id
