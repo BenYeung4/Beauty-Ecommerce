@@ -19,6 +19,10 @@ router.use('/dashboard', dashboardRoutes);
 const adminRoutes = require('./admin-routes.js');
 router.use('/admin', adminRoutes);
 
+//uses the cart-routes.js file //
+const cartRoutes = require('./cart-routes');
+router.use('/cart', cartRoutes);
+
 //in case of error, then state it, all else just return
 router.use((req, res) => {
     res.status(404).end();
