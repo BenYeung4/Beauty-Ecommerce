@@ -26,9 +26,6 @@
                         <div class="flex justify-right h-12 px-3 py-3">
                             {{#if loggedIn}}
                             <li>
-                                <a href="/cart" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Cart</a>
-                            </li>
-                            <li>
                                 <a href="#" id="logout" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
                             </li>
                             {{else}}
@@ -37,6 +34,9 @@
                             </li>
                             <li>
                                 <a href="/signup" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Sign up</a>
+                            </li>
+                            <li>
+                                <a href="/cart" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Cart</a>
                             </li>
                             {{/if}}
                         </div>
