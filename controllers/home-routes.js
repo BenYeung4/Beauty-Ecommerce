@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
         // Render
         res.render('homepage', {
             products,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            isAdmin: req.session.isAdmin
         });
     })
     .catch(err => {
