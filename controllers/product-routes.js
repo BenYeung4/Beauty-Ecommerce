@@ -3,12 +3,12 @@ const sequelize = require('../config/connection');
 const { User, Product, Cart, allProducts } = require('../models');
 
 router.get('/', (req, res) => {
-    Cart.findAll()
+    Product.findAll()
     .then(dbProductData => {
         // Serialize each product //
-        const products = dbProductData.map(product => product.get({ plain: true }));
+        const products = dbProductData.map(products => products.get({ plain: true }));
         // Render //
-        res.render('cart', {
+        res.render('product', {
             products,
             loggedIn: req.session.loggedIn
         });

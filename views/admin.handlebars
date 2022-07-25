@@ -1,14 +1,16 @@
-<table>
-    <thead><tr><th>id</th><th>name</th><th>Actions</th></tr></thead>
-    <tbody>
+<div class="flex flex-wrap m-3">
   {{#each products as |product|}}
-  <tr>
-  <td>{{id}}</td>
-    <td>{{name}}</td>
-    <td class="w-96"><a href="/admin/edit/{{id}}" 
-    class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium mx-3">Edit Product</a>
-    <a href="/admin/delete/{{id}}" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium mx-3">Delete Product</a></td>
-    </tr>
+  <a href="/admin/edit/{{id}}">
+  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
+    <div class="float-right w-48"><img src="{{url}}" class="object-contain h-24 w-48" /></div>
+    <div class="w-full mx-auto">{{name}}</div>
+  </div>
+  </a>
   {{/each}}
-  </tbody>
-</table>
+  <a href="/admin/new">
+  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
+    <div class="text-8xl text-center w-full">➕</div>
+    <div class="text-lg text-center w-full mt-5">Add New</div>
+  </div>
+  </a>
+</div>

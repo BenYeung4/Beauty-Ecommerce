@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const fs = require('fs');
+const path = require('path');
 const { Product } = require('../models');
 const { isAdmin } = require('../utils/auth');
 
@@ -8,7 +10,7 @@ router.get('/', isAdmin, (req, res) => {
     .then((dbProductData) => {
         // serialize data before passing to template
         const products = dbProductData.map((product) => product.get({ plain: true }));
-        res.render('admin', { products, loggedIn: true });
+        res.render('admin', { products, loggedIn: true, isAdmin: true });
     })
     .catch((err) => {
         console.log(err);
@@ -26,13 +28,22 @@ router.get('/edit/:id', isAdmin, (req, res) => {
     .then((dbProductData) => {
         // serialize data before passing to template
         const product = dbProductData.get({ plain: true });
-        res.render('edit-product', { product, loggedIn: true });
+        const images = fs.readdirSync(path.join(__dirname,'../public/images'));
+        const imageOptions = '<option value=""></option>' + images.reduce((accum, curr) => accum += `<option value="${curr}">${curr}</option>`, '');
+        res.render('edit-product', { product, imageOptions, loggedIn: true, isAdmin: true });
     })
     .catch((err) => {
         console.log(err);
         res.status(500).json(err);
     });
 });
+
+// Add new product
+router.get('/new', isAdmin, (req, res) => {
+    const images = fs.readdirSync(path.join(__dirname,'../public/images'));
+    const imageOptions = '<option value=""></option>' + images.reduce((accum, curr) => accum += `<option value="${curr}">${curr}</option>`, '');
+    res.render('new-product', { imageOptions, loggedIn: true, isAdmin: true});
+})
 
 // Delete one product
 router.get('/delete/:id', isAdmin, (req, res) => {

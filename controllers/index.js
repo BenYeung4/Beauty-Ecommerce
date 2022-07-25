@@ -23,6 +23,11 @@ router.use('/admin', adminRoutes);
 const cartRoutes = require('./cart-routes');
 router.use('/cart', cartRoutes);
 
+//uses the allProducts.js file //
+const productRoutes = require('./product-routes');
+router.use('/product', productRoutes);
+router.use('/products', productRoutes);
+
 //in case of error, then state it, all else just return
 router.use((req, res) => {
     res.status(404).end();

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Product, Cart } = require('../../models');
+const { User, Product, Cart, allProducts } = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
 
 // Get all users /api/users only for admins
@@ -20,7 +20,7 @@ router.get('/', isAdmin, (req, res) => {
 //  if admin, any user id, if not admin, force the logged in user id
 router.get('/:id', apiAuth, (req, res) => {
     User.findOne({
-        where: { id: req.session.is_admin ? req.params.id : req.session.user_id },
+        where: { id: req.session.isAdmin ? req.params.id : req.session.user_id },
         attributes: {
             exclude: ['password'],
         },
@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
-            req.session.is_admin = dbUserData.is_admin;
+            req.session.isAdmin = dbUserData.is_admin;
             // Respond with user data
             res.status(200).json(dbUserData);
         });
@@ -106,7 +106,7 @@ router.post('/login', (req, res) => {
             // declare session variables
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
-            req.session.is_admin = dbUserData.is_admin;
+            req.session.isAdmin = dbUserData.is_admin;
             req.session.loggedIn = true;
 
             res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -138,7 +138,7 @@ router.put('/:id', apiAuth, (req, res) => {
     User.update(req.body, {
         individualHooks: true,
         where: {
-            id: req.session.is_admin ? req.params.id : req.session.user_id,
+            id: req.session.isAdmin ? req.params.id : req.session.user_id,
         },
     })
     .then((dbUserData) => {
@@ -159,7 +159,7 @@ router.delete('/:id', apiAuth, (req, res) => {
     // Allow user to delete only their own user_id except if this user is an admin
     if (
         req.session.user_id !== parseInt(req.params.id) &&
-        !req.session.is_admin
+        !req.session.isAdmin
     ) {
         res.status(401).json({ message: 'Not authorized to this user id' });
         return;
