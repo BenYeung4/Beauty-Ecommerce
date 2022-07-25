@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const path = require('path');
 const fs = require('fs');
-const { User, Product, Cart} = require('../../models');
+const { User, Product, Cart, allProducts} = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
 // Multer to upload product images in multipart forms
 const multer = require('multer');

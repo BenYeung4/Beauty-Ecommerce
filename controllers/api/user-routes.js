@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Product, Cart } = require('../../models');
+const { User, Product, Cart, allProducts } = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
 
 // Get all users /api/users only for admins
