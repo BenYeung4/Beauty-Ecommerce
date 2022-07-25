@@ -2,13 +2,14 @@
     <div class="bg-slate-800 text-white p-4">Edit Product Form</div>
 
     <form class="edit-post-form" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="product-url" name="product-url" value="{{product.url}}" />
         <div class="flex flex-row p-4">
             <div class="w-32"><label for="product-name">Name:</label></div>
             <div class="w-full"><input type="text" id="product-name" class="border w-full p-1" value="{{product.name}}" /></div>
         </div>
         <div class="flex flex-row p-4">
             <div class="w-32"><label for="product-image">Image:</label></div>
-            <div class="w-full"><input type="file" id="product-image" name="product-image" class="border w-full p-1" value="{{product.name}}" /></div>
+            <div class="w-full"><input type="file" id="product-image" name="product-image" class="border w-full p-1" accept=".jpg,image/jpeg" /></div>
         </div>
         <div class="flex flex-row p-4">
             <div class="w-32"><label for="product-description">Description:</label></div>

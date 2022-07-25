@@ -1,6 +1,34 @@
 const router = require('express').Router()
+const path = require('path');
+const fs = require('fs');
 const { User, Product, Cart} = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
+// Multer to upload product images in multipart forms
+const multer = require('multer');
+// Upload to public/images folder to serve out to clients
+// const upload = multer({ dest: 'public/images/' });
+// Configuration for multer
+const multerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null,'public');
+    },
+    filename: (req, file, cb) => {
+        const ext = file.mimetype.split('/')[1];
+        cb(null, `images/${file.originalname}`);
+    },
+});
+// Filter for multer - allow only jpg files
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.split('/')[1] === 'jpeg') {
+        cb(null, true);
+    } else {
+        cb(new Error('Not a jpeg file!'), false);
+    }
+};
+const upload = multer({
+    storage: multerStorage,
+    fileFilter: multerFilter
+});
 
 // Get all products
 router.get('/', (req, res) => {
@@ -35,16 +63,16 @@ router.get('/:id', (req, res) => {
 });
 
 // Make new product
-router.post('/', isAdmin, (req, res) => {
+router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
     // expects {url, description, manufacturer, name, stock, price, meight}
     Product.create({
-        url: req.body.url,
-        description: req.body.description,
-        manufacturer: req.body.manufacturer,
-        name: req.body.name,
-        stock: req.body.stock,
-        price: req.body.price,
-        weight: req.body.weight
+        url: '/images/'+req.body.product_url,
+        description: req.body.product_description,
+        manufacturer: req.body.product_manufacturer,
+        name: req.body.product_name,
+        stock: req.body.product_stock,
+        price: req.body.product_price,
+        weight: req.body.product_weight
     })
     .then(dbProductData => res.json(dbProductData))
     .catch(err => {
@@ -54,16 +82,16 @@ router.post('/', isAdmin, (req, res) => {
 });
 
 // Change product details, by id
-router.put('/:id', isAdmin, (req, res) => {
+router.put('/:id', isAdmin, upload.single('product_image'), (req, res) => {
     Product.update(
         {
-            url: req.body.url,
-            description: req.body.description,
-            manufacturer: req.body.manufacturer,
-            name: req.body.name,
-            stock: req.body.stock,
-            price: req.body.price,
-            weight: req.body.weight
+            url: '/images/'+req.body.product_url,
+            description: req.body.product_description,
+            manufacturer: req.body.product_manufacturer,
+            name: req.body.product_name,
+            stock: req.body.product_stock,
+            price: req.body.product_price,
+            weight: req.body.product_weight
         },
         {
             where: {
