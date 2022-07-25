@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Product, Cart} = require('../../models');
+const { User, Product, Cart, allProducts } = require('../../models');
 const { apiAuth } = require('../../utils/auth');
 
 // Get all products in cart for user_id

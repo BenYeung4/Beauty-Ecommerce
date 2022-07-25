@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Product, Cart} = require('../models');
+const { User, Product, Cart, allProducts } = require('../models');
 
 router.get('/', (req, res) => {
     Cart.findAll()
