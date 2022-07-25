@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/BenYeung4/Beauty-Ecommerce/issues"
   },
-  "homepage": "https://github.com/BenYeung4/Beauty-Ecommerce#readme",
+  "products": "https://github.com/BenYeung4/Beauty-Ecommerce#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.4",
