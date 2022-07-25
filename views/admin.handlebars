@@ -1,4 +1,4 @@
-<table>
+{{!-- <table>
     <thead><tr><th>id</th><th>name</th><th>Actions</th></tr></thead>
     <tbody>
   {{#each products as |product|}}
@@ -11,4 +11,21 @@
     </tr>
   {{/each}}
   </tbody>
-</table>
+</table> --}}
+
+<div class="flex flex-wrap m-3">
+  {{#each products as |product|}}
+  <a href="/admin/edit/{{id}}">
+  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
+    <div class="float-right w-48"><img src="{{url}}" class="object-contain h-24 w-48" /></div>
+    <div class="w-full mx-auto">{{name}}</div>
+  </div>
+  </a>
+  {{/each}}
+  <a href="/admin/new">
+  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
+    <div class="text-8xl text-center w-full">➕</div>
+    <div class="text-lg text-center w-full mt-5">Add New</div>
+  </div>
+  </a>
+</div>
