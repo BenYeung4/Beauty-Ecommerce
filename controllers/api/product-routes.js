@@ -85,7 +85,7 @@ router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
 router.put('/:id', isAdmin, upload.single('product_image'), (req, res) => {
     Product.update(
         {
-            url: '/images/'+req.body.product_url,
+            url: req.body.product_choice ? '/images/'+req.body.product_choice : '/images/'+req.body.product_url,
             description: req.body.product_description,
             manufacturer: req.body.product_manufacturer,
             name: req.body.product_name,
