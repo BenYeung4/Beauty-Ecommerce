@@ -3,11 +3,11 @@ const path = require('path');
 const fs = require('fs');
 const { User, Product, Cart, allProducts } = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
+
 // Multer to upload product images in multipart forms
 const multer = require('multer');
-// Upload to public/images folder to serve out to clients
-// const upload = multer({ dest: 'public/images/' });
-// Configuration for multer
+
+// Configuration for multer - public/images
 const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public');
@@ -17,14 +17,16 @@ const multerStorage = multer.diskStorage({
         cb(null, `images/${file.originalname}`);
     },
 });
+
 // Filter for multer - allow only jpg files
 const multerFilter = (req, file, cb) => {
-    if (file.mimetype.split('/')[1] === 'jpeg') {
+    if (file.mimetype.split('/')[1] === 'jpeg' | file.mimetype.split('/')[1] === 'png') {
         cb(null, true);
     } else {
-        cb(new Error('Not a jpeg file!'), false);
+        cb(new Error('Not a jpeg or png file!'), false);
     }
 };
+
 const upload = multer({
     storage: multerStorage,
     fileFilter: multerFilter,
@@ -75,7 +77,11 @@ router.get('/:id', (req, res) => {
 router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
     // expects {url, description, manufacturer, name, stock, price, meight}
     Product.create({
+<<<<<<< HEAD
         url: '/images/' + req.body.product_url,
+=======
+        url: req.body.product_choice ? '/images/'+req.body.product_choice : '/images/'+req.body.product_url,
+>>>>>>> 9035226bc2c13fb15b512841dd9bafc5047d9112
         description: req.body.product_description,
         manufacturer: req.body.product_manufacturer,
         name: req.body.product_name,

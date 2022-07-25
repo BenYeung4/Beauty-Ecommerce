@@ -1,21 +1,15 @@
-{{!login file}}
+<div>Checkout</div>
+<div></div>
+<div class="m-3">
+  {{#each products as |product|}}
+  <a href="#">
+  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
+    <div class="float-right w-48"><img src="{{url}}" class="object-contain h-12 w-24" /></div>
+    <div class="w-full mx-auto">{{name}}</div>
 
-<div class="w-96 border border-slate-800 m-8">
-    <div class="bg-slate-800 text-white p-4">Login Form</div>
-<form class="login-form">
-    <div class="flex flex-row p-4">
-        <div class="w-24"><label for="email-login">Email:</label></div>
-        <div class="w-full"><input type="text" id="email-login" class="border w-full" /></div>
-    </div>
-    <div class="flex flex-row p-4">
-        <div class="w-24"><label for="password-login">Password:</label></div>
-        <div class="w-full"><input type="password" id="password-login" class="border w-full" /></div>
-    </div>
-    <div class="flex flex-row p-4">
-        <div class="justify-left grow"><button type="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium">Login</button></div>
-        <div class="justify-right"></div>
-    </div>
-</form>
+  </div>
+  </a>
+  {{/each}}
 </div>
 
 <script src="/javascript/cart.js"></script>
