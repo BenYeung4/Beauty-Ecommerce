@@ -1,7 +1,6 @@
 const Product = require('./Product');
 const User = require('./User');
 const Cart = require('./Cart');
-const allProducts = require('./allProducts');
 
 User.hasMany(Cart, {
     foreignKey: 'user_id',
@@ -33,19 +32,4 @@ Cart.belongsTo(Product, {
     onDelete: 'CASCADE',
 });
 
-allProducts.belongsTo(Product, {
-    foreignKey: 'product_id',
-    onDelete: 'Cascade',
-});
-
-allProducts.belongsToMany(User, {
-    through: Cart,
-    as: 'cart_items',
-    foreignKey: 'product_id',
-});
-
-allProducts.hasMany(Cart, {
-    foreignKey: 'product_id',
-});
-
-module.exports = { User, Product, Cart, allProducts };
+module.exports = { User, Product, Cart };
