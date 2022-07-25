@@ -1,11 +1,8 @@
 const Product = require('./Product');
 const User = require('./User');
 const Cart = require('./Cart');
-<<<<<<< HEAD
 const Category = require('./Category');
 const allProducts = require('./allProducts');
-=======
->>>>>>> 9035226bc2c13fb15b512841dd9bafc5047d9112
 
 User.hasMany(Cart, {
     foreignKey: 'user_id',
@@ -37,7 +34,6 @@ Cart.belongsTo(Product, {
     onDelete: 'CASCADE',
 });
 
-<<<<<<< HEAD
 Product.belongsTo(Category, {
     foreignKey: 'category_id',
 });
@@ -62,6 +58,3 @@ allProducts.hasMany(Cart, {
 });
 
 module.exports = { User, Product, Cart, allProducts, Category };
-=======
-module.exports = { User, Product, Cart };
->>>>>>> 9035226bc2c13fb15b512841dd9bafc5047d9112
