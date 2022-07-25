@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { User, Product, Cart, allProducts } = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
+const allProductsRoutes = require('./allProducts-routes');
 // Multer to upload product images in multipart forms
 const multer = require('multer');
 // Upload to public/images folder to serve out to clients
@@ -32,9 +33,10 @@ const upload = multer({
 
 // Get all products
 router.get('/', (req, res) => {
-    Product.findAll({
-        order: [['name', 'ASC']],
-    })
+    allProducts
+        .findAll({
+            order: [['name', 'ASC']],
+        })
         .then((dbPostData) => res.json(dbPostData))
         .catch((err) => {
             console.log(err);
@@ -44,18 +46,12 @@ router.get('/', (req, res) => {
 
 // Get one product with id
 router.get('/:id', (req, res) => {
-    Product.findOne({
-        where: {
-            id: req.params.id,
-        },
-        attributes: ['id', 'product_name', 'price', 'stock'],
-        include: [
-            {
-                model: Category,
-                attributes: ['category_name'],
+    allProducts
+        .findOne({
+            where: {
+                id: req.params.id,
             },
-        ],
-    })
+        })
         .then((dbProductData) => {
             if (!dbProductData) {
                 res.status(404).json({
@@ -74,16 +70,16 @@ router.get('/:id', (req, res) => {
 // Make new product
 router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
     // expects {url, description, manufacturer, name, stock, price, meight}
-    Product.create({
-        url: '/images/' + req.body.product_url,
-        description: req.body.product_description,
-        manufacturer: req.body.product_manufacturer,
-        name: req.body.product_name,
-        stock: req.body.product_stock,
-        price: req.body.product_price,
-        weight: req.body.product_weight,
-        category_id: req.body.category_id,
-    })
+    allProducts
+        .create({
+            url: '/images/' + req.body.product_url,
+            description: req.body.product_description,
+            manufacturer: req.body.product_manufacturer,
+            name: req.body.product_name,
+            stock: req.body.product_stock,
+            price: req.body.product_price,
+            weight: req.body.product_weight,
+        })
         .then((dbProductData) => res.json(dbProductData))
         .catch((err) => {
             console.log(err);
@@ -93,25 +89,23 @@ router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
 
 // Change product details, by id
 router.put('/:id', isAdmin, upload.single('product_image'), (req, res) => {
-    Product.update(
-        {
-            url: req.body.product_choice
-                ? '/images/' + req.body.product_choice
-                : '/images/' + req.body.product_url,
-            description: req.body.product_description,
-            manufacturer: req.body.product_manufacturer,
-            name: req.body.product_name,
-            stock: req.body.product_stock,
-            price: req.body.product_price,
-            weight: req.body.product_weight,
-            category_id: req.body.category_id,
-        },
-        {
-            where: {
-                id: req.params.id,
+    allProducts
+        .update(
+            {
+                url: '/images/' + req.body.product_url,
+                description: req.body.product_description,
+                manufacturer: req.body.product_manufacturer,
+                name: req.body.product_name,
+                stock: req.body.product_stock,
+                price: req.body.product_price,
+                weight: req.body.product_weight,
             },
-        }
-    )
+            {
+                where: {
+                    id: req.params.id,
+                },
+            }
+        )
         .then((dbProductData) => {
             if (!dbProductData) {
                 res.status(404).json({
@@ -129,11 +123,12 @@ router.put('/:id', isAdmin, upload.single('product_image'), (req, res) => {
 
 // Delete product by id - we no longer sell product
 router.delete('/:id', isAdmin, (req, res) => {
-    Product.destroy({
-        where: {
-            id: req.params.id,
-        },
-    })
+    allProducts
+        .destroy({
+            where: {
+                id: req.params.id,
+            },
+        })
         .then((dbProductData) => {
             if (!dbProductData) {
                 res.status(404).json({
