@@ -35,7 +35,7 @@ const productdata = [
     {
         url: '/images/KLAVUU.png',
         description:
-            'As a brilliant pearl facial foaming cleanser, its designed to moisturize and soften skin. Is it formulated to reach deep down into the pores to clean out all the dirt and makeup and restore your bright skin. ',
+            'It is the viscous, essence or serum-like texture was what made them stood out from other toners in the market with main ingredients being beta-glucan, hyaluronic acid and centella asiatica that instantly calm & soothe the sensitive skin. In that sense, this product is good enough to replace a serum from your skincare routine if they are layered multiple times using bare hands.',
         manufacturer: 'KLAVUU',
         name: 'Pure Pearlsation Revitalizing Facial Cleansing Foam',
         stock: 100,
@@ -84,7 +84,8 @@ const productdata = [
     },
     {
         url: '/images/SOMEBYMI.png',
-        description: '',
+        description:
+            'A cult favorite, one bottle of this multi-tasking toner is sold every three seconds! As its name suggests, the formula boasts three types of chemical exfoliants (AHAs, BHAs, and PHAs) plus papaya and witch hazel extracts to effectively boost cell turnover and keep skin smooth and healthy.',
         manufacturer: 'SOME BY MI',
         name: 'AHA-BHA-PHA 30Days Miracle Toner',
         stock: 100,
@@ -134,7 +135,7 @@ const productdata = [
     {
         url: '/images/Sulwhasoo.png',
         description:
-            'Korean red ginseng is the hero ingredient in this concentrated cream that works to firm skin, soften wrinkles, and visibly brighten the eye area for a more radiant youthful glow.',
+            'Korean red ginseng is the hero ingredient in this concentrated cream that works to firm skin, soften wrinkles, and visibly brighten the eye area for a more radiant glow. Those with mature skin will benefit from the ginseng formula especially as it works to improve elasticity and reduce creepiness around the eyes, giving them a smoother and more youthful appearance.',
         manufacturer: 'Sulwhasoo',
         name: 'Concentrated Ginseng Renewing Eye Cream',
         stock: 100,

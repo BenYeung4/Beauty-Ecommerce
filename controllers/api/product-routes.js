@@ -1,7 +1,7 @@
-const router = require('express').Router()
+const router = require('express').Router();
 const path = require('path');
 const fs = require('fs');
-const { User, Product, Cart} = require('../../models');
+const { User, Product, Cart } = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
 // Multer to upload product images in multipart forms
 const multer = require('multer');
@@ -10,7 +10,7 @@ const multer = require('multer');
 // Configuration for multer
 const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null,'public');
+        cb(null, 'public');
     },
     filename: (req, file, cb) => {
         const ext = file.mimetype.split('/')[1];
@@ -27,109 +27,126 @@ const multerFilter = (req, file, cb) => {
 };
 const upload = multer({
     storage: multerStorage,
-    fileFilter: multerFilter
+    fileFilter: multerFilter,
 });
 
 // Get all products
 router.get('/', (req, res) => {
     Product.findAll({
-        order: [['name', 'ASC']]
+        order: [['name', 'ASC']],
     })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then((dbPostData) => res.json(dbPostData))
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // Get one product with id
 router.get('/:id', (req, res) => {
     Product.findOne({
         where: {
-            id: req.params.id
-        }
+            id: req.params.id,
+        },
+        attributes: ['id', 'product_name', 'price', 'stock'],
+        include: [
+            {
+                model: Category,
+                attributes: ['category_name'],
+            },
+        ],
     })
-    .then(dbProductData => {
-        if (!dbProductData) {
-            res.status(404).json({ message: 'No product found with this id'});
-            return;
-        }
-        res.json(dbProductData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then((dbProductData) => {
+            if (!dbProductData) {
+                res.status(404).json({
+                    message: 'No product found with this id',
+                });
+                return;
+            }
+            res.json(dbProductData);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // Make new product
 router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
     // expects {url, description, manufacturer, name, stock, price, meight}
     Product.create({
-        url: '/images/'+req.body.product_url,
+        url: '/images/' + req.body.product_url,
         description: req.body.product_description,
         manufacturer: req.body.product_manufacturer,
         name: req.body.product_name,
         stock: req.body.product_stock,
         price: req.body.product_price,
-        weight: req.body.product_weight
+        weight: req.body.product_weight,
+        category_id: req.body.category_id,
     })
-    .then(dbProductData => res.json(dbProductData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then((dbProductData) => res.json(dbProductData))
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // Change product details, by id
 router.put('/:id', isAdmin, upload.single('product_image'), (req, res) => {
     Product.update(
         {
-            url: req.body.product_choice ? '/images/'+req.body.product_choice : '/images/'+req.body.product_url,
+            url: req.body.product_choice
+                ? '/images/' + req.body.product_choice
+                : '/images/' + req.body.product_url,
             description: req.body.product_description,
             manufacturer: req.body.product_manufacturer,
             name: req.body.product_name,
             stock: req.body.product_stock,
             price: req.body.product_price,
-            weight: req.body.product_weight
+            weight: req.body.product_weight,
+            category_id: req.body.category_id,
         },
         {
             where: {
-                id: req.params.id
-            }
+                id: req.params.id,
+            },
         }
     )
-    .then(dbProductData => {
-        if (!dbProductData) {
-            res.status(404).json({ message: 'No product found with this id'});
-            return;
-        }
-        res.json(dbProductData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then((dbProductData) => {
+            if (!dbProductData) {
+                res.status(404).json({
+                    message: 'No product found with this id',
+                });
+                return;
+            }
+            res.json(dbProductData);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // Delete product by id - we no longer sell product
 router.delete('/:id', isAdmin, (req, res) => {
     Product.destroy({
         where: {
-            id: req.params.id
-        }
+            id: req.params.id,
+        },
     })
-    .then(dbProductData => {
-        if (!dbProductData) {
-            res.status(404).json({ message: 'No product found with this id' });
-            return;
-        }
-        res.json(dbProductData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then((dbProductData) => {
+            if (!dbProductData) {
+                res.status(404).json({
+                    message: 'No product found with this id',
+                });
+                return;
+            }
+            res.json(dbProductData);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;
