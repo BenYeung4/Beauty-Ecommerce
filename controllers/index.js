@@ -26,6 +26,7 @@ router.use('/cart', cartRoutes);
 //uses the allProducts.js file //
 const productRoutes = require('./product-routes');
 router.use('/product', productRoutes);
+router.use('/products', productRoutes);
 
 //in case of error, then state it, all else just return
 router.use((req, res) => {
