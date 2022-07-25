@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { User, Product, Cart, allProducts } = require('../../models');
 const { apiAuth, isAdmin } = require('../../utils/auth');
-const allProductsRoutes = require('./allProducts-routes');
+const allProductsRoutes = require('./allProducts-routes.js');
 // Multer to upload product images in multipart forms
 const multer = require('multer');
 // Upload to public/images folder to serve out to clients
