@@ -11,6 +11,7 @@ const productdata = [
         stock: 100,
         price: 28.0,
         weight: '40 Pads - 207ml',
+        category_id: 2,
     },
     {
         url: '/images/SKINRxLAB.png',
@@ -21,6 +22,7 @@ const productdata = [
         stock: 100,
         price: 31.0,
         weight: '50ml ',
+        category_id: 2,
     },
     {
         url: '/images/TimeStopCollagenAmpoule.png',
@@ -31,16 +33,19 @@ const productdata = [
         stock: 100,
         price: 18.0,
         weight: '20ml',
+        category_id: 2,
     },
     {
         url: '/images/KLAVUU.png',
         description:
-            'It is the viscous, essence or serum-like texture was what made them stood out from other toners in the market with main ingredients being beta-glucan, hyaluronic acid and centella asiatica that instantly calm & soothe the sensitive skin. In that sense, this product is good enough to replace a serum from your skincare routine if they are layered multiple times using bare hands.',
+            'It is the viscous, essence or serum-like texture was what made them stood out from other toners in the market with main ingredients being beta-glucan, hyaluronic acid and centella asiatica that instantly calm & soothe the sensitive skin.',
+        //In that sense, this product is good enough to replace a serum from your skincare routine if they are layered multiple times using bare hands.
         manufacturer: 'KLAVUU',
         name: 'Pure Pearlsation Revitalizing Facial Cleansing Foam',
         stock: 100,
         price: 27.0,
         weight: '130ml',
+        category_id: 2,
     },
     {
         url: '/images/Klairs.png',
@@ -51,6 +56,7 @@ const productdata = [
         stock: 100,
         price: 22.0,
         weight: '180ml',
+        category_id: 2,
     },
     {
         url: '/images/BeautyofJoseon.png',
@@ -61,6 +67,7 @@ const productdata = [
         stock: 100,
         price: 18.0,
         weight: '50ml',
+        category_id: 2,
     },
     {
         url: '/images/HANSKIN.png',
@@ -71,6 +78,7 @@ const productdata = [
         stock: 100,
         price: 27.0,
         weight: '300ml',
+        category_id: 3,
     },
     {
         url: '/images/NEOGEN.png',
@@ -81,6 +89,7 @@ const productdata = [
         stock: 100,
         price: 19.0,
         weight: '160ml',
+        category_id: 3,
     },
     {
         url: '/images/SOMEBYMI.png',
@@ -91,6 +100,7 @@ const productdata = [
         stock: 100,
         price: 23.0,
         weight: '150ml',
+        category_id: 3,
     },
     {
         url: '/images/INWARD.png',
@@ -101,6 +111,7 @@ const productdata = [
         stock: 100,
         price: 38.0,
         weight: '90ml',
+        category_id: 3,
     },
     {
         url: '/images/ThePlantBase.png',
@@ -111,6 +122,7 @@ const productdata = [
         stock: 100,
         price: 15.0,
         weight: '60ml',
+        category_id: 3,
     },
     {
         url: '/images/Goodal.png',
@@ -121,6 +133,7 @@ const productdata = [
         stock: 100,
         price: 20.0,
         weight: '75ml - 60 Pads',
+        category_id: 3,
     },
     {
         url: '/images/SKII.png',
@@ -131,16 +144,19 @@ const productdata = [
         stock: 100,
         price: 247.0,
         weight: '228ml',
+        category_id: 4,
     },
     {
         url: '/images/Sulwhasoo.png',
         description:
-            'Korean red ginseng is the hero ingredient in this concentrated cream that works to firm skin, soften wrinkles, and visibly brighten the eye area for a more radiant glow. Those with mature skin will benefit from the ginseng formula especially as it works to improve elasticity and reduce creepiness around the eyes, giving them a smoother and more youthful appearance.',
+            'Korean red ginseng is the hero ingredient in this concentrated cream that works to firm skin, soften wrinkles, and visibly brighten the eye area for a more radiant glow. ',
+        //Those with mature skin will benefit from the ginseng formula especially as it works to improve elasticity and reduce creepiness around the eyes, giving them a smoother and more youthful appearance.
         manufacturer: 'Sulwhasoo',
         name: 'Concentrated Ginseng Renewing Eye Cream',
         stock: 100,
         price: 180.0,
         weight: '20ml',
+        category_id: 4,
     },
     {
         url: '/images/Peach&Lily.png',
@@ -151,6 +167,7 @@ const productdata = [
         stock: 100,
         price: 80.0,
         weight: '25 ml - 20 Sheets',
+        category_id: 4,
     },
     {
         url: '/images/TheHistory.png',
@@ -161,6 +178,7 @@ const productdata = [
         stock: 100,
         price: 226.0,
         weight: '100ml',
+        category_id: 4,
     },
 ];
 
