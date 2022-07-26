@@ -24,8 +24,8 @@ const cartRoutes = require('./cart-routes');
 router.use('/cart', cartRoutes);
 
 //uses the checkout-routes.js file //
-const checkoutRoutes = require('./checkout-routes');
-router.use('/checkout', checkoutRoutes);
+// const checkoutRoutes = require('./checkout-routes');
+// router.use('/checkout', checkoutRoutes);
 
 //uses the allProducts.js file //
 const productRoutes = require('./product-routes');
