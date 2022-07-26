@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
             res.render('product', {
                 products,
                 loggedIn: req.session.loggedIn,
+                isAdmin: req.session.isAdmin
             });
         })
         .catch((err) => {
@@ -39,6 +40,7 @@ router.get('/:id', (req, res) => {
             res.render('single-product', {
                 product,
                 loggedIn: req.session.loggedIn,
+                isAdmin: req.session.isAdmin
             });
         })
         .catch((err) => {
