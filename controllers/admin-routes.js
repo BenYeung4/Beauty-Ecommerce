@@ -32,7 +32,8 @@ router.get('/edit/:id', isAdmin, (req, res) => {
         // serialize data before passing to template
         const product = dbProductData.get({ plain: true });
         const images = fs.readdirSync(path.join(__dirname,'../public/images'));
-        const imageOptions = '<option value=""></option>' + images.reduce((accum, curr) => accum += `<option value="${curr}">${curr}</option>`, '');
+        const filename = dbProductData.url.split('/')[dbProductData.url.split('/').length-1];
+        const imageOptions = '<option value=""></option>' + images.reduce((accum, curr) => accum += curr === filename ? `<option value="${curr}" selected>${curr}</option>` : `<option value="${curr}">${curr}</option>`, '');
         Category.findAll()
         .then((dbCategoryData) => {
             
