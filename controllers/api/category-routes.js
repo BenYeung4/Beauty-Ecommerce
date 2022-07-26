@@ -4,8 +4,6 @@ const { apiAuth, isAdmin } = require('../../utils/auth');
 const path = require('path');
 const fs = require('fs');
 
-// The `/api/categories` endpoint
-
 router.get('/', (req, res) => {
     // find all categories
     // be sure to include its associated Products
