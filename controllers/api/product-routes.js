@@ -90,7 +90,7 @@ router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
         stock: req.body.product_stock,
         price: req.body.product_price,
         weight: req.body.product_weight,
-        category_id: req.body.category_id,
+        category_id: req.body.product_category,
     })
         .then((dbProductData) => res.json(dbProductData))
         .catch((err) => {
@@ -112,7 +112,7 @@ router.put('/:id', isAdmin, upload.single('product_image'), (req, res) => {
             stock: req.body.product_stock,
             price: req.body.product_price,
             weight: req.body.product_weight,
-            category_id: req.body.category_id,
+            category_id: req.body.product_category,
         },
         {
             where: {
