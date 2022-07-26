@@ -4,7 +4,14 @@ const { User, Product, Cart, Category } = require('../models');
 //allProducts
 
 router.get('/', (req, res) => {
+    // Check if category is passed in url like ?category=3
+    let whereObject = {};
+    if (req.query.category) {
+        whereObject.category_id = req.query.category;
+    }
+
     Product.findAll({
+        where: whereObject,
         include: Category
     })
         .then((dbProductData) => {
