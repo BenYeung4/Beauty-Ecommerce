@@ -27,25 +27,26 @@
                                 </li>
                         </div>
                         <div class="flex justify-right h-12 px-3 py-3">
-
+                            <li>
+                                <a href="/products" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Products</a>
+                            </li>
+                            {{#if loggedIn}}
                             {{#if isAdmin}}
                             <li>
-                                <a href="/admin" id="admin" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Admin</a>
+                                <a href="/admin" id="admin" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Admin</a>
                             </li>
                             {{/if}}
                             <li>
-                                <a href="#" id="logout" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                                <a href="#" id="logout" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Logout</a>
                             </li>
-                            {{!-- {{else}}
-                            <li>
-                                <a href="/products" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Products</a>
-                            </li> --}}
+                            {{else}}
                             <li>
                                 <a href="/login" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium mx-3">Login</a>
                             </li>
                             <li>
                                 <a href="/signup" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Sign up</a>
                             </li>
+                            {{/if}}
                             <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
   <a href="/cart" role="button" class="relative flex">
     <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
