@@ -5,8 +5,6 @@ const path = require('path');
 const fs = require('fs');
 
 router.get('/', (req, res) => {
-    // find all categories
-    // be sure to include its associated Products
     Category.findAll({
         include: {
             model: Product,

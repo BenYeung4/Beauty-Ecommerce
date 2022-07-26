@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const path = require('path');
 const fs = require('fs');
-const { User, Product, Cart } = require('../../models');
+const { User, Product, Cart, Category } = require('../../models');
 //allProducts
 const { apiAuth, isAdmin } = require('../../utils/auth');
 
@@ -54,7 +54,7 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id,
         },
-        attributes: ['id', 'product_name', 'price', 'stock'],
+        attributes: ['id', 'name', 'price', 'stock'],
         include: [
             {
                 model: Category,
