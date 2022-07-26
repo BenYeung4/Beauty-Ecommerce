@@ -55,8 +55,6 @@ Back End
 Servers
 Databases
 
-
-
 ```
 ## Technologies Used
 - Model View Control (MVC)
