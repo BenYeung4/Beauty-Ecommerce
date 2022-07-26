@@ -12,10 +12,10 @@
             <div class="bg-white p-2 whitespace-pre-line"><img src="{{url}}" class="object-contain h-48 w-96" />{{description}}</div>
             <div class="p-2">
                 <a href="/product/{{id}}">more info</a>
+                <div>{{category.category_name}}</div>
             <div>{{manufacturer}}</div>
             <div>${{price}}</div>           
             <div>{{weight}}</div>
-            <div>{{category}}</div>
             {{#if low_stock}}
             {{#if out_of_stock}}
             <div>OUT OF STOCK</div>
