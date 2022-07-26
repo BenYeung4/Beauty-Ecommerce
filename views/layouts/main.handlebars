@@ -9,6 +9,7 @@
   <title>Beauty Products</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata">
 
   <!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
 </head>  
@@ -22,49 +23,54 @@
                                 <li>
                                     <a href="/" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
                                 </li>
-                                <li>
-                                    <a href="/products" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">All Products</a>
-                                </li>
                         </div>
                         <div class="flex justify-right h-12 px-3 py-3">
-
+                            <li>
+                                <a href="/products" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Products</a>
+                            </li>
+                            {{#if loggedIn}}
                             {{#if isAdmin}}
                             <li>
-                                <a href="/admin" id="admin" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Admin</a>
+                                <a href="/admin" id="admin" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Admin</a>
                             </li>
                             {{/if}}
                             <li>
-                                <a href="#" id="logout" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                                <a href="#" id="logout" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Logout</a>
                             </li>
-                            {{!-- {{else}}
-                            <li>
-                                <a href="/products" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Products</a>
-                            </li> --}}
+                            {{else}}
                             <li>
                                 <a href="/login" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium mx-3">Login</a>
                             </li>
                             <li>
                                 <a href="/signup" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Sign up</a>
                             </li>
-                            <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
-  <a href="/cart" role="button" class="relative flex">
-    <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
-      <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
-      </svg></a>
-</li>
-
-                                <a href="/cart" role="button" class="relative flex"> 
-                                <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
-                                <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
-                                </svg></span></a>
+                            {{/if}}
+                            <li>
+                                <a href="/cart" role="button" class="relative flex">
+                                    <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                                        <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
+                                  </svg></a>
                             </li>
+
                         </div>
                         </div>
                     </ul>
-                {{!-- </nav>
-                <h1 class="text-4xl font-black text-slate-800 px-4">
-                    <a href="/">Beauty Products</a>
-                </h1> --}}
+                </nav>
+                <div class="bg-red-800 text-white">
+                    <div class="flex flex-row">
+                        <div class="flex justify-center h-16 md:h-8 px-3 py-1 grow space-x-2">
+                            <a href="/"><span style="font-family: prata">Bonsai</span></a>
+                            <a class="hover:text-red-300" href="/product">All Products</a>
+                            <a class="hover:text-red-300" href="/product/?category=2">Day Skincare</a>
+                            <a class="hover:text-red-300" href="/product/?category=3">Night Skincare</a>
+                            <a class="hover:text-red-300" href="/product/?category=4">Featured Products</a>
+                            {{!-- {{#each categories as |category|}}
+                            <a href="/product/?category={{category.id}}">{{category.category_name}}</a>
+                            {{/each}} --}}
+                        </div>
+                    </div>
+
+                </div>
             </header>
     <main>
             <!--this is the express-handlebar.js from the template that we use-->

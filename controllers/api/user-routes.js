@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Product, Cart, allProducts } = require('../../models');
+const { User, Product, Cart } = require('../../models');
+//allProducts
 const { apiAuth, isAdmin } = require('../../utils/auth');
 
 // Get all users /api/users only for admins
@@ -20,7 +21,9 @@ router.get('/', isAdmin, (req, res) => {
 //  if admin, any user id, if not admin, force the logged in user id
 router.get('/:id', apiAuth, (req, res) => {
     User.findOne({
-        where: { id: req.session.isAdmin ? req.params.id : req.session.user_id },
+        where: {
+            id: req.session.isAdmin ? req.params.id : req.session.user_id,
+        },
         attributes: {
             exclude: ['password'],
         },
@@ -63,22 +66,22 @@ router.post('/', (req, res) => {
         email: req.body.email,
         password: req.body.password,
     })
-    .then((dbUserData) => {
-        // save uses a callback function
-        req.session.save(() => {
-            // Set session data
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.loggedIn = true;
-            req.session.isAdmin = dbUserData.is_admin;
-            // Respond with user data
-            res.status(200).json(dbUserData);
+        .then((dbUserData) => {
+            // save uses a callback function
+            req.session.save(() => {
+                // Set session data
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
+                req.session.loggedIn = true;
+                req.session.isAdmin = dbUserData.is_admin;
+                // Respond with user data
+                res.status(200).json(dbUserData);
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 });
 
 // POST login unsecured because this is login
@@ -89,33 +92,36 @@ router.post('/login', (req, res) => {
             email: req.body.email,
         },
     })
-    .then((dbUserData) => {
-        if (!dbUserData) {
-            res.status(400).json({
-                message: 'No user with that email address!',
+        .then((dbUserData) => {
+            if (!dbUserData) {
+                res.status(400).json({
+                    message: 'No user with that email address!',
+                });
+                return;
+            }
+            const validPassword = dbUserData.checkPassword(req.body.password);
+            if (!validPassword) {
+                res.status(400).json({ message: 'Incorrect password!' });
+                return;
+            }
+
+            req.session.save(() => {
+                // declare session variables
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
+                req.session.isAdmin = dbUserData.is_admin;
+                req.session.loggedIn = true;
+
+                res.json({
+                    user: dbUserData,
+                    message: 'You are now logged in!',
+                });
             });
-            return;
-        }
-        const validPassword = dbUserData.checkPassword(req.body.password);
-        if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect password!' });
-            return;
-        }
-
-        req.session.save(() => {
-            // declare session variables
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.isAdmin = dbUserData.is_admin;
-            req.session.loggedIn = true;
-
-            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 });
 
 // POST logout
@@ -141,17 +147,17 @@ router.put('/:id', apiAuth, (req, res) => {
             id: req.session.isAdmin ? req.params.id : req.session.user_id,
         },
     })
-    .then((dbUserData) => {
-        if (!dbUserData[0]) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then((dbUserData) => {
+            if (!dbUserData[0]) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // DELETE /api/users/1
@@ -170,20 +176,20 @@ router.delete('/:id', apiAuth, (req, res) => {
             id: req.params.id,
         },
     })
-    .then((dbUserData) => {
-        if (!dbUserData) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        // Destroy session if successful in deleting user
-        req.session.destroy(() => {
-            res.status(204).end();
+        .then((dbUserData) => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            // Destroy session if successful in deleting user
+            req.session.destroy(() => {
+                res.status(204).end();
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 });
 
 module.exports = router;

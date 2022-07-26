@@ -1,10 +1,7 @@
-<ol class="post-list">
+<div class="flex flex-wrap m-3">
   {{#each products as |product|}}
-  <li>
-    {{! the > brings in from the /partial/post-info.handlebar}}
     {{> product-info product }}
-  </li>
   {{/each}}
-</ol>
+</div>
 
 <script src='/javascript/product.js'></script>

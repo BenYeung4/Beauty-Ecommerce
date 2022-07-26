@@ -3,6 +3,7 @@ async function editFormHandler(event) {
     event.preventDefault();
 
     const product_name = document.querySelector('#product-name').value;
+    const product_category = document.querySelector('#product-category').value;
     const product_image = document.querySelector('#product-image');
     const select = document.querySelector('#product-choice');
     const product_choice = select.options[select.selectedIndex].text;
@@ -23,6 +24,7 @@ async function editFormHandler(event) {
     const formData = new FormData();
     formData.append('product_id', product_id);
     formData.append('product_name', product_name);
+    formData.append('product_category', product_category);
     // If there is a new file, change the url (filename) and submit the image for upload
     if (product_image.files.length>0) {
         formData.append('product_url', product_image.files[0].name);    
