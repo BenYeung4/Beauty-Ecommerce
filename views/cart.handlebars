@@ -1,12 +1,12 @@
 {{!Cart File}}
-<div id="checkout" class="w-96 mx-auto justify-center">
+<div id="checkout" class="w-80 mx-auto justify-center">
   <div class="text-xlg m-3 w-full">Checkout</div>
     <div class='m-3 w-full'>
       <span class="text-lg">Total: {{total}}
       Items: {{totalitems}}</span>
       {{#each cart as |item|}}
         
-            <div class='w-96 h-full min-h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200'>
+            <div class='w-80 h-full min-h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200'>
               <a href='/product/{{item.product.id}}'>
                 <div class='float-right w-48'>
                   <img src='{{item.product.url}}' class='object-contain h-12 w-24' />
