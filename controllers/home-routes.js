@@ -12,12 +12,14 @@ router.get('/', (req, res) => {
             res.render('homepage', {
                 products,
                 loggedIn: req.session.loggedIn,
+                isAdmin: req.session.isAdmin
             });
         })
         .catch((err) => {
             console.log(err);
             res.status(500).json(err);
    
+        })
 });
 })
 

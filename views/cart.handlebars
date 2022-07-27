@@ -1,18 +1,30 @@
 {{!Cart File}}
-
-
-<div>Checkout</div>
-<div></div>
-<div class="m-3">
-  {{#each products as |product|}}
-  <a href="#">
-  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
-    <div class="float-right w-48"><img src="{{url}}" class="object-contain h-12 w-24" /></div>
-    <div class="w-full mx-auto">{{name}}</div>
-
+<div class="w-96 mx-auto justify-center">
+  <div id="checkout" class="text-xlg m-3 w-full">Checkout</div>
+    <div class='m-3 w-full'>
+      <span class="text-lg">Total: {{total}}
+      Items: {{totalitems}}</span>
+      {{#each cart as |item|}}
+        <a href='/product/{{item.product.id}}'>
+            <div
+                class='w-96 h-full min-h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200'
+            >
+                <div class='float-right w-48'><img
+                        src='{{item.product.url}}'
+                        class='object-contain h-12 w-24'
+                    /></div>
+                <div class='w-full mx-auto'>{{item.product.name}}</div>
+                <div class="w-full mx-auto">{{item.product.description}}</div>
+                <div class="w-full mx-auto p-3">Quantity Ordered: {{item.quantity}} Subtotal: {{item.subtotal}} <a class="text-red-800 hover:text-red-600" data-id="{{id}}" href="">Remove</a></div>
+                
+            </div>
+        </a>
+      {{/each}}
+    </div>
+    <div class="justify-center">
+      <button id="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium justify-center">Submit Order Now</button>
+    </div>
   </div>
-  </a>
-  {{/each}}
 </div>
 
 <script src="/javascript/cart.js"></script>
@@ -43,4 +55,5 @@
     </div>
   </div>
 </div>
+<script src='/javascript/cart.js'></script>
 <script src='/javascript/cart.js'></script>

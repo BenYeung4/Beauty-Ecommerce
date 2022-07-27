@@ -1,0 +1,27 @@
+<div>Checkout</div>
+<div></div>
+<div class="flex flex-row p-4">
+    <div class="w-32"><label for="product-name">Name:</label></div>
+    <div class="w-32"><label for="product-price">Price:</label></div>
+    <div class="w-32"><label for="product-image">Image:</label></div>
+    <div class="w-full"><input type="file" id="product-image" name="product-image" class="border w-full p-1" accept=".jpg,image/jpeg,.png,image/png,image/x-png" /></div>
+    <div>Quantity:</div>
+</div>
+  {{#each cart as |item|}}
+    <div>{{product.name}}</div>
+    <div>{{product.price}}</div>
+    <div>{{{imageOptions}}}</div>
+    <div> {{#each cart as |item|}}</div>
+  <a href="#">
+  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
+    <div class="float-right w-48"><img src="{{item.product.url}}" class="object-contain h-12 w-24" /></div>
+    <div class="w-full mx-auto">{{item.product.name}}</div>
+  </div>
+  </a>
+  {{/each}}
+</div>
+<div>
+Total Price is {{total_price}}
+</div>
+
+<script src="/javascript/cart.js"></script>

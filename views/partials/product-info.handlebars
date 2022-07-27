@@ -1,28 +1,7 @@
-{{!partial help extract smaller components from a template to reuse in other templates}}
-
-        <article class="border-solid border-slate-800 border-2 m-2">
-            <div class="bg-slate-800 text-white text-lg font-bold p-2 flex flex-row">
-                <div class="justify-left grow truncate">
-                    {{name}}
-                </div>
-                <div class="justify-right truncate">
-                    {{manufacturer}}
-                </div>
-            </div>
-            <div class="bg-white p-2 whitespace-pre-line"><img src="{{url}}" class="object-contain h-48 w-96" />{{description}}</div>
-            <div class="p-2">
-                <a href="/product/{{id}}">more info</a>
-            <div>{{manufacturer}}</div>
-            <div>${{price}}</div>           
-            <div>{{weight}}</div>
-            {{#if low_stock}}
-            {{#if out_of_stock}}
-            <div>OUT OF STOCK</div>
-            {{else}}
-            <div>Only {{stock}} items left!</div>
-            {{/if}}
-            {{else}}
-            <div>IN STOCK</div>
-            {{/if}}
-            </div>
-        </article>
+  <a href="/product/{{id}}">
+  <div class="grid grid-row-3 gap-1 place-content-center text-center w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
+    <div class="w-48"><img src="{{url}}" class="object-contain h-24 w-48" /></div>
+    <div class="w-full mx-auto font-bold">{{name}}</div>
+     <div class="w-full mx-auto text-lg font-medium">${{price}}</div>
+  </div>
+  </a>
