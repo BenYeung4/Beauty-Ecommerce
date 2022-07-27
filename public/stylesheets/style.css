@@ -7,32 +7,43 @@ body {
     background-position: center;
 }
 
-/*Top Nav. Ban. Text Styling*/
+
 .hero {
-    display: flex;
     border: 2px solid rgb(255, 0, 234);
     width: 100%;
     height: 640px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
 }
+
+/* #imgBox {
+    height: 100%;
+    width: 100%;
+} */
 
 #imgBox {
-    height: 635px;
+    height: 640px;
+    width: 350px;
+}
+
+/* #featuredImg {
+    height: 33.33%;
     width: 33.33%;
-    align-content: center;
 }
 
-#featuredImg {
-    align-content: center;
+#daySet {
+    height: 33.33%;
+    width: 33.33%;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+#nightSet {
+    height: 33.33%;
+    width: 33.33%;
+} */
+
+/* @import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap'); */
 
 
 /* Button Code */
-.button {
+/* .button {
 display: inline-block;
 outline: 0;
 text-align: center;
@@ -55,4 +66,4 @@ font-size: 11px;
 .button:hover {
     background: #e8e8e8;
     color: #3d3d3d;
-}
+} */
