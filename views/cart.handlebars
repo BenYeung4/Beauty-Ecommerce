@@ -24,8 +24,16 @@
         </svg>
     </button>
             </div>
-        </a>
-    {{/each}}
+      {{/each}}
+    </div>
+    <div class="justify-center">
+      {{#if cart.length}}
+      <button id="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium justify-center">Submit Order Now</button>
+      {{else}}
+      <div>Your cart is empty!</div>
+      {{/if}}
+    </div>
+  </div>
 </div>
  </select>
         <button id="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium">Add to Cart</button>

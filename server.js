@@ -53,6 +53,6 @@ app.use(require("./controllers/"));
 //turn on connection to db and server. if it doesn't find a table, it will create one for us
 //force: false, not neeed but if it was set to true, it would drop and re-create all the databases tables on startup, this is used when we need to make changes to the Sequelize models, the database would need a way to unerstand that somethin has changed.
 //if we set it to true, then the database connection must sync with the model definitions and associations.  it will make the tables re-create if there are any asociation changes ex. password changes
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });

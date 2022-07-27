@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beauty Products</title>
+  <title>Sensei-KB</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
@@ -15,20 +15,20 @@
 
 </head>  
 
+
 <body class="font-sans text-slate-900">
   <div class="wrapper">
             <header>
                 <nav class="bg-slate-800">
                     <ul><div class="flex flex-row">
-                        <div class="flex justify-left h-12 px-3 py-3 grow">
-                                <li>
-                                    <a href="/" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                                </li>
+                        <div class="flex justify-between h-25 md:h-16 px-3 py-1 grow space-x-2"><li>
+                            <a href="/" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 text-sm font-medium">Sensei-KB</a>
+                        </li>
                         </div>
                         <div class="flex justify-right h-12 px-3 py-3">
-                            <li>
+                            {{!-- <li>
                                 <a href="/products" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Products</a>
-                            </li>
+                            </li> --}}
                             {{#if loggedIn}}
                             {{#if isAdmin}}
                             <li>
@@ -48,7 +48,7 @@
                             {{/if}}
                             <li>
                                 <a href="/cart" role="button" class="relative flex">
-                                    <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                                    <svg class="flex-1 w-8 h-8 fill-slate-500" viewbox="0 0 24 24">
                                         <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
                                   </svg></a>
                             </li>
@@ -57,14 +57,18 @@
                         </div>
                     </ul>
                 </nav>
+
+
                 <div class="bg-red-800 text-white ">
                     <div class="flex flex-row">
-                        <div class="flex justify-between h-25 md:h-16 px-3 py-1 grow space-x-2">
-                            <a href="/"><span style="font-family: prata">Bonsai</span></a>
-                            <a class="hover:text-red-300" href="/product">All Products</a>
+                        <div class="flex justify-between px-3 md:h-25 grow space-x-2">
                             <a class="hover:text-red-300" href="/product/?category=2">Day Skincare</a>
                             <a class="hover:text-red-300" href="/product/?category=3">Night Skincare</a>
+                            <a href="/product/?category=3">선생님</a>
+                            <a href="/products"><img class="object-contain h-25 w-40" src="/images/AnimeSword.png">
+                            <a href="/product/?category=3">케이비</a>
                             <a class="hover:text-red-300" href="/product/?category=4">Featured Products</a>
+                            <a class="hover:text-red-300" href="/product">All Products</a>
                             {{!-- {{#each categories as |category|}}
                             <a href="/product/?category={{category.id}}">{{category.category_name}}</a>
                             {{/each}} --}}

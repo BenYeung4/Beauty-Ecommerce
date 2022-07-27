@@ -34,11 +34,11 @@ async function editFormHandler(event) {
         formData.append('product_image', product_image.files[0]);
     } else {
         // product-url is a hidden value, contains the previous filename as /images/filename.jpg
-        const product_url = document.querySelector('#product-url').value;
-        if (product_url.includes('/')) {
-            // set product_url to the old filename
-            formData.append('product_url', product_url.split('/')[2]);
-        }
+        // const product_url = document.querySelector('#product-url').value;
+        // if (product_url.includes('/')) {
+        //     // set product_url to the old filename
+        //     formData.append('product_url', product_url.split('/')[2]);
+        // }
     }
     formData.append('product_choice', product_choice);
     formData.append('product_description', product_description);

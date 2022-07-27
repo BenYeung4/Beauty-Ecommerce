@@ -81,9 +81,9 @@ router.get('/:id', (req, res) => {
 router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
     // expects {url, description, manufacturer, name, stock, price, meight}
     Product.create({
-        url: req.body.product_choice
-            ? '/images/' + req.body.product_choice
-            : '/images/' + req.body.product_url,
+        url: req.body.product_url
+            ? '/images/' + req.body.product_url
+            : '/images/' + req.body.product_choice,
         description: req.body.product_description,
         manufacturer: req.body.product_manufacturer,
         name: req.body.product_name,
@@ -101,11 +101,12 @@ router.post('/', isAdmin, upload.single('product_image'), (req, res) => {
 
 // Change product details, by id
 router.put('/:id', isAdmin, upload.single('product_image'), (req, res) => {
+    console.log(req.body.product_url);
     Product.update(
         {
-            url: req.body.product_choice
-                ? '/images/' + req.body.product_choice
-                : '/images/' + req.body.product_url,
+            url: req.body.product_url
+                ? '/images/' + req.body.product_url
+                : '/images/' + req.body.product_choice,
             description: req.body.product_description,
             manufacturer: req.body.product_manufacturer,
             name: req.body.product_name,
