@@ -1,56 +1,31 @@
-async function deleteItemCart(event) {
-    // event.preventDefault();
-    // console.log(event.target, event.target.dataset);
-    if (event.target.dataset.product_id) {
-        event.preventDefault();
+// delete this product
+async function deleteFormHandler(event) {
+    event.preventDefault();
 
-        const product_id = event.target.dataset.product_id;
+    const product_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
 
-        try {
-            const response = await fetch(`/api/cart/${product_id}`, {
-                method: 'DELETE'
-            });
+    try {
+        const response = await fetch(`/api/products/${product_id}`, {
+            method: 'DELETE',
+        });
 
-            // check response status
-            if (response.ok) {
-                document.location.reload();
-            } else {
-                alert(response.statusText);
-            }
-        } catch (error) {
-            alert(error);
+        // check the response status
+        if (response.ok) {
+            document.location.replace('/user');
+        } else {
+            alert(response.statusText);
         }
+    } catch (error) {
+        alert(error);
     }
 }
 
-document.querySelector('#checkout').addEventListener('click',deleteItemCart);
+// let btnHeart = document.querySelector('#Like');
+// btnHeart.addEventListener(
+//     'click',
+//     () => (btnHeart.style.backgroundColor = 'red')
+// );
 
-// async function checkOutCart(event) {
-//     event.preventDefault();
-
-//     const product_quantity = document.querySelector('#quantity').value;
-//     const product_id = window.location.toString().split('/')[
-//         window.location.toString().split('/').length - 1
-//     ];
-
-//     try {
-//         const response = await fetch(`/api/checkout-cart/${product_id}`, {
-//             method: 'POST',
-//             body: JSON.stringify({ quantity: product_quantity }),
-//             headers: { 'Content-Type': 'application/json' },
-//         });
-
-//         // check response status
-//         if (response.ok) {
-//             alert('Checkout Complete!');
-//         } else {
-//             alert(response.statusText);
-//         }
-//     } catch (error) {
-//         alert(error);
-//     }
-// }
-
-// document
-//     .querySelector('.checkout-cart')
-//     .addEventListener('submit', checkOutCart);
+document.querySelector('#delete').addEventListener('click', deleteFormHandler);
