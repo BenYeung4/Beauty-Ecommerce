@@ -1,31 +1,26 @@
-// delete this product
-async function deleteFormHandler(event) {
-    event.preventDefault();
+async function deleteItemCart(event) {
+    // event.preventDefault();
+    // console.log(event.target, event.target.dataset);
+    if (event.target.dataset.product_id) {
+        event.preventDefault();
 
-    const product_id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+        const product_id = event.target.dataset.product_id;
 
-    try {
-        const response = await fetch(`/api/products/${product_id}`, {
-            method: 'DELETE',
-        });
+        try {
+            const response = await fetch(`/api/cart/${product_id}`, {
+                method: 'DELETE'
+            });
 
-        // check the response status
-        if (response.ok) {
-            document.location.replace('/user');
-        } else {
-            alert(response.statusText);
+            // check response status
+            if (response.ok) {
+                document.location.reload();
+            } else {
+                alert(response.statusText);
+            }
+        } catch (error) {
+            alert(error);
         }
-    } catch (error) {
-        alert(error);
     }
 }
 
-// let btnHeart = document.querySelector('#Like');
-// btnHeart.addEventListener(
-//     'click',
-//     () => (btnHeart.style.backgroundColor = 'red')
-// );
-
-document.querySelector('#delete').addEventListener('click', deleteFormHandler);
+document.querySelector('#checkout').addEventListener('click',deleteItemCart);
