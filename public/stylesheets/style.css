@@ -9,9 +9,8 @@ body {
 
 
 .hero {
-    border: 2px solid rgb(255, 0, 234);
     width: 100%;
-    height: 640px;
+    height: 542px;
 }
 
 /* #imgBox {
@@ -20,8 +19,8 @@ body {
 } */
 
 #imgBox {
-    height: 640px;
-    width: 350px;
+    height: 542px;
+    width: 436px;
 }
 
 /* #featuredImg {
