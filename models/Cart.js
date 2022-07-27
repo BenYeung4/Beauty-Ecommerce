@@ -9,35 +9,35 @@ Cart.init(
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: false
+            allowNull: false,
         },
         product_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'product',
-                key: 'id'
-            }
+                key: 'id',
+            },
         },
         quantity: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'id'
-            }
-        }
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'cart'
+        modelName: 'cart',
     }
 );
 
