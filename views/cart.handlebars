@@ -1,17 +1,24 @@
 {{!Cart File}}
 
-
 <div>Checkout</div>
 <div></div>
-<div class="m-3">
-  {{#each cart as |item|}}
-  <a href="#">
-  <div class="w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200">
-    <div class="float-right w-48"><img src="{{item.product.url}}" class="object-contain h-12 w-24" /></div>
-    <div class="w-full mx-auto">{{item.product.name}}</div>
-  </div>
-  </a>
-  {{/each}}
+<div class='m-3'>
+    {{#each cart as |item|}}
+        <a href='#'>
+            <div
+                class='w-96 h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200'
+            >
+                <div class='float-right w-48'><img
+                        src='{{item.product.url}}'
+                        class='object-contain h-12 w-24'
+                    /></div>
+                <div class='w-full mx-auto'>{{item.product.name}}</div>
+            </div>
+        </a>
+    {{/each}}
 </div>
+ </select>
+        <button id="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium">Add to Cart</button>
+        </div>
 
-<script src="/javascript/cart.js"></script>
+<script src='/javascript/cart.js'></script>

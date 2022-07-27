@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Product, Cart } = require('../models');
+
 //allProducts
 
 router.get('/', (req, res) => {
@@ -8,18 +9,16 @@ router.get('/', (req, res) => {
         where: {
             user_id: req.session.user_id,
         },
-        include: Product
+        include: Product,
     })
         .then((dbCartData) => {
             // Serialize each product //
-            const cart = dbCartData.map((item) =>
-                item.get({ plain: true })
-            );
+            const cart = dbCartData.map((item) => item.get({ plain: true }));
             // Render //
             res.render('cart', {
                 cart,
                 loggedIn: req.session.loggedIn,
-                isAdmin: req.session.isAdmin
+                isAdmin: req.session.isAdmin,
             });
         })
         .catch((err) => {
