@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Product, Cart } = require('../models');
+const { withAuth } = require('../utils/auth');
 
 //allProducts
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     Cart.findAll({
         where: {
             user_id: req.session.user_id,
