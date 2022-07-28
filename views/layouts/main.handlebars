@@ -19,14 +19,14 @@
             <header>
                 <nav class="bg-slate-800">
                     <ul><div class="flex flex-row">
-                        <div class="flex justify-between h-25 md:h-16 px-3 py-1 grow space-x-2"><li>
-                            <a href="/" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 text-sm font-medium">Sensei-KB</a>
+                        <div class="flex justify-between h-25 md:h-16 px-3 py-1 grow space-x-2">
+                        <li>
+                            {{!-- <a href="/" class="sensaiKB" role="button">SENSAI-KB</a> --}}
+                            <a id="sensaiKB" href="/" class="text-white px-3 py-2 text-sm font-medium- font-">SENSAI-KB</a>
                         </li>
                         </div>
                         <div class="flex justify-right h-12 px-3 py-3">
-                            {{!-- <li>
-                                <a href="/products" class="bg-slate-900 hover:bg-slate-500 text-white px-3 py-2 mx-3 rounded-md text-sm font-medium">Products</a>
-                            </li> --}}
+                          
                             {{#if loggedIn}}
                             {{#if isAdmin}}
                             <li>
@@ -62,11 +62,12 @@
                         <div class="flex justify-between px-3 md:h-25 grow space-x-2">
                             <a class="hover:text-red-300" href="/product/?category=2">Day Skincare</a>
                             <a class="hover:text-red-300" href="/product/?category=3">Night Skincare</a>
-                            <a href="/product/?category=3">선생님</a>
                             <a href="/products"><img class="object-contain h-25 w-40" src="/images/AnimeSword.png">
-                            <a href="/product/?category=3">케이비</a>
                             <a class="hover:text-red-300" href="/product/?category=4">Featured Products</a>
                             <a class="hover:text-red-300" href="/product">All Products</a>
+
+                            {{!-- <a href="/product/?category=3">선생님-케이비</a> --}}
+
                             {{!-- {{#each categories as |category|}}
                             <a href="/product/?category={{category.id}}">{{category.category_name}}</a>
                             {{/each}} --}}

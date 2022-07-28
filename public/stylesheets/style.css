@@ -1,12 +1,9 @@
 /* background-image: url(); */
+background-color: rgb(196, 188, 188);
 
 body {
+    background-image: url(/images/Wallpaper.png);
     background-color: rgb(196, 188, 188);
-    background-repeat: none;
-    background-size: cover;
-    background-position: center;
-}
-    background-color: rgb(203, 221, 123);
     background-repeat: none;
     background-size: cover;
     background-position: center;
@@ -18,56 +15,9 @@ body {
     height: 542px;
 }
 
-/* #imgBox {
-    height: 100%;
-    width: 100%;
-} */
 
 #imgBox {
-    height: 542px;
-    width: 436px;
+    height: 593px;
+    width: 480px;
 }
 
-/* #featuredImg {
-    height: 33.33%;
-    width: 33.33%;
-}
-
-#daySet {
-    height: 33.33%;
-    width: 33.33%;
-}
-
-#nightSet {
-    height: 33.33%;
-    width: 33.33%;
-} */
-
-/* @import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap'); */
-
-
-/* Button Code */
-/* .button {
-display: inline-block;
-outline: 0;
-text-align: center;
-cursor: pointer;
-height: 34px;
-padding: 0 13px;
-vertical-align: top;
-border-radius: 3px;
-border: 1px solid transparent;
-transition: all .3s ease;
-background: #fff;
-border-color: #e8e8e8;
-color: #000;
-font-weight: 600;
-text-transform: uppercase;
-line-height: 16px;
-font-size: 11px;
-}
-
-.button:hover {
-    background: #e8e8e8;
-    color: #3d3d3d;
-} */
