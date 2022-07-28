@@ -7,8 +7,8 @@
       {{#each cart as |item|}}
         
             <div class='text-center w-80 h-full min-h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200'>
-               <div class='justify-center w-48'>
-                  <img src='{{item.product.url}}' class='object-contain h-12 w-24' />
+               <div class='ml-20 w-48'>
+                  <img src='{{item.product.url}}' class='object-contain h-40 w-65' />
                 </div>
               <a href='/product/{{item.product.id}}'>
                 <div class='font-bold w-full mx-auto'>{{item.product.manufacturer}} - {{item.product.name}}</div>
