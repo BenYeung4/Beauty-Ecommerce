@@ -6,13 +6,16 @@
       Items: {{totalitems}}</span>
       {{#each cart as |item|}}
         
-            <div class='w-80 h-full min-h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200'>
-              <a href='/product/{{item.product.id}}'>
-                <div class='float-right w-48'>
+                            <div>
                   <img src='{{item.product.url}}' class='object-contain h-12 w-24' />
                 </div>
-                <div class='w-full mx-auto'>{{item.product.name}}</div>
-                <div class="w-full mx-auto">{{item.product.description}}</div>
+            <div class='text-center w-80 h-full min-h-48 object-contain m-3 p-1 rounded-md bg-slate-100 hover:bg-slate-200'>
+              <a href='/product/{{item.product.id}}'>
+                {{!-- <div class='float-right w-48'>
+                  <img src='{{item.product.url}}' class='object-contain h-12 w-24' />
+                </div> --}}
+                <div class='w-full mx-auto'>{{item.product.manufacturer}} - {{item.product.name}}</div>
+                {{!-- <div class="w-full mx-auto">{{item.product.description}}</div> --}}
                 <div class="w-full mx-auto p-3">Quantity Ordered: {{item.quantity}} Subtotal: {{item.subtotal}}</div>
               </a>
               <a class="text-red-800 hover:text-red-600 cursor-pointer" data-product_id="{{id}}">Remove</a>
