@@ -1,13 +1,13 @@
-    <div class="w-200 object-center m-3 p-1 rounded-md bg-slate-100">
+      <div class="content-center w-48"><img src="{{url}}" class="object-contain h-24 w-48" /></div>
+    
+    
+    <div class="w-200 text-center m-3 p-1 rounded-md bg-slate-100">
     <div class="w-full mx-auto text-lg font-bold">{{manufacturer}} - {{name}}</div>
-    <div class="float-right w-48"><img src="{{url}}" class="object-contain h-24 w-48" /></div>
-    {{!-- <div class="w-full mx-auto text-lg font-bold">{{manufacturer}} - {{name}}</div> --}}
+    {{!-- <div class="float-right w-48"><img src="{{url}}" class="object-contain h-24 w-48" /></div> --}}
     <div class="w-full mx-auto text-sm">INFO:{{description}}</div>
     <div class="w-32"><label for="product-price">{{product.price}}</label></div>
-    {{!-- <div class="w-full mx-auto text-base">{{manufacturer}}</div> --}}
     <div class="w-full mx-auto float-right text-lg font-medium">${{price}}</div>
     <div class="w-full mx-auto text-sm">{{weight}}</div>
-
     <form class="add-cart">
     <div class="w-full mx-auto text-sm flex flex-row justify-end">
         <div>Quantity: 
@@ -18,9 +18,11 @@
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
-        <button id="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium">+Cart</button>
+        <button id="submit" class="bg-slate-900 hover:bg-slate-400 text-white px-3 py-2 rounded-md text-sm font-medium">
++Cart</button>
         </div>
     </div>
     </form>
   </div>
+
   
