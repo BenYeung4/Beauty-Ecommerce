@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
                 products.get({ plain: true })
             );
             // Render //
+            console.log(products)
             res.render('product', {
                 layout: 'sideNav',
                 products,
