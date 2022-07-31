@@ -20,7 +20,9 @@ router.get('/', (req, res) => {
                 products.get({ plain: true })
             );
             // Render //
+            console.log(products)
             res.render('product', {
+                layout: 'sideNav',
                 products,
                 loggedIn: req.session.loggedIn,
                 isAdmin: req.session.isAdmin
@@ -45,6 +47,7 @@ router.get('/:id', (req, res) => {
             const product = dbProductData.get({ plain: true });
             // Render //
             res.render('single-product', {
+                layout: 'sideNav',
                 product,
                 loggedIn: req.session.loggedIn,
                 isAdmin: req.session.isAdmin
