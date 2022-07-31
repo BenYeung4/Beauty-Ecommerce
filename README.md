@@ -85,8 +85,23 @@ Finally, you must add your project to the portfolio that you created in Module 2
 
 ## Screenshots of Beauty E-Commerce Website
 
-- All Products
-![All Products](https://user-images.githubusercontent.com/102841726/181080337-5c20ec0b-6ee4-455c-8522-45930c032183.png)
+- Home Page
+![homepage](https://user-images.githubusercontent.com/102841726/182036951-4c951064-2f87-4496-9584-48fcd6f73ee9.png)
+
+-Sign Up Form
+![signup](https://user-images.githubusercontent.com/102841726/182036966-1d68883f-f78d-41c1-bd0f-8db201ec15bd.png)
+
+- Log In Form
+![login](https://user-images.githubusercontent.com/102841726/182036994-8a759f5b-52ff-43a3-913f-ebc4161ac78f.png)
+
+- Products Page
+![featuredproducts](https://user-images.githubusercontent.com/102841726/182037021-3c36c171-fd69-4fbf-81b8-8858f863a265.png)
+
+- Individual Product / Add to Cart 
+![individual product](https://user-images.githubusercontent.com/102841726/182037062-5a7c909d-0b8a-497c-b7d1-e2c07efd0b7d.png)
+
+- Cart Checkout
+![cartcheckout](https://user-images.githubusercontent.com/102841726/182037079-a89d5dc6-b35a-44d3-935a-b81cb688476c.png)
 
 
 # Installs
