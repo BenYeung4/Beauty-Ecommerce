@@ -72,12 +72,16 @@ Finally, you must add your project to the portfolio that you created in Module 2
 
 ```
 ## Technologies Used
-- Model View Control (MVC)
-- Node JS
-- Object Oriented Programming(OOP)
+- Model View Controller (MVC)
+- via Handlebars.js as templating engine
+- Node.js
 - Express.js
-- SQL 
-- Create Read Update Delete (CRUD) 
+- Express session, connect session sequelize
+- Dotenv
+- Bcrypt to hash user password at rest
+- Object Oriented Programming(OOP)
+- MySQL/Sequelize (Jaws DB when hosted by Heroku)
+- Create Read Update Delete (CRUD) RESTful API for all four tables
 
 ## Screenshots of Beauty E-Commerce Website
 
@@ -87,13 +91,32 @@ Finally, you must add your project to the portfolio that you created in Module 2
 
 # Installs
 
+```sh
+git clone https://github.com/BenYeung4/Beauty-Ecommerce.git
+cd beauty-ecommerce
 npm i
-
-// this to help protect our password and make the .env file
-npm install dotenv
+```
 
 create a .env file, enter the following with your database name, username, and password
 DB_NAME='product_db'
 DB_USER=''
 DB_PASSWORD=''
 SECRET = 
+
+Create local database:
+
+```sh
+mysql -u root -p
+source db/schema.sql
+```
+
+Ctrl-C to exit mysql
+
+Seed database and start server:
+
+```
+npm run seed
+npm start
+```
+
+Browse to http://localhost:3001/
