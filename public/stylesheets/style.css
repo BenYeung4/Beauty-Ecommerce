@@ -25,6 +25,12 @@ body {
     width: 900px;   
 }
 
+.sideNav {
+    position: sticky;
+    top: 30px;
+    left: 30px;
+}
+
 /* .sideNav {
     height: 420px;
     width: 150px;
