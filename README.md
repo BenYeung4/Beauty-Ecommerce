@@ -14,7 +14,7 @@ https://github.com/DamarisCanales
 https://github.com/Muzan67
 
 # Deployed Application on Heroku
-https://beauty-ecommerce.herokuapp.com/
+https://rocky-bayou-23584.herokuapp.com/
 
 # Github Repository of Beauty E-Commerce
 https://github.com/BenYeung4/Beauty-Ecommerce
